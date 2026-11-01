@@ -22,7 +22,7 @@ const listings=[
 ['realityunmade',3000,'Other'],
 ['agentsurety',20000,'AI & Technology'],
 ['goldtale',3000,'Other'],
-['goldenwink',null,'Other'],
+['goldenwink',1500,'Other'],
 ['urkesh',3000,'Spiritual & Mythic'],
 ['emeraldtablets',3000,'Spiritual & Mythic'],
 ['goldenageawakening',2500,'Spiritual & Mythic'],
@@ -54,9 +54,6 @@ const listings=[
 ['sigmoraai',1000,'AI & Technology']
 ];
 const cards=document.querySelector('#cards'),search=document.querySelector('#search'),category=document.querySelector('#category'),sort=document.querySelector('#sort');
-function render(){const term=search.value.trim().toLowerCase(),cat=category.value;let matches=listings.filter(([name,,group])=>name.includes(term)&&(cat==='all'||group===cat));if(sort.value==='low')matches.sort((a,b)=>(a[1]===null)-(b[1]===null)||(a[1]??0)-(b[1]??0));if(sort.value==='high')matches.sort((a,b)=>(a[1]===null)-(b[1]===null)||(b[1]??0)-(a[1]??0));if(sort.value==='az')matches.sort((a,b)=>a[0].localeCompare(b[0]));cards.replaceChildren();for(const [name,price,group] of matches){const card=document.createElement('article');card.className='card';const label=document.createElement('div');label.className='small';label.textContent=group;const h=document.createElement('div');h.className='handle';h.textContent='@'+name;const p=document.createElement('div');p.className='price';p.textContent=price===null?'Taking offers':'const a=document.createElement('a');a.className='btn';a.textContent='View on HandleHub →';a.href='https://handlehub.app/telegram/'+encodeURIComponent(name);a.target='_blank';a.rel='noopener noreferrer';card.append(label,h,p,a);cards.append(card)}document.querySelector('#qty').textContent=listings.length;document.querySelector('#empty').style.display=matches.length?'none':'block'}
-[search,category,sort].forEach(x=>x.addEventListener('input',render));render();
-</script></body></html>
-+price.toLocaleString('en-US');const a=document.createElement('a');a.className='btn';a.textContent='View on HandleHub →';a.href='https://handlehub.app/telegram/'+encodeURIComponent(name);a.target='_blank';a.rel='noopener noreferrer';card.append(label,h,p,a);cards.append(card)}document.querySelector('#qty').textContent=listings.length;document.querySelector('#empty').style.display=matches.length?'none':'block'}
+function render(){const term=search.value.trim().toLowerCase(),cat=category.value;let matches=listings.filter(([name,,group])=>name.includes(term)&&(cat==='all'||group===cat));if(sort.value==='low')matches.sort((a,b)=>(a[1]===null)-(b[1]===null)||(a[1]??0)-(b[1]??0));if(sort.value==='high')matches.sort((a,b)=>(a[1]===null)-(b[1]===null)||(b[1]??0)-(a[1]??0));if(sort.value==='az')matches.sort((a,b)=>a[0].localeCompare(b[0]));cards.replaceChildren();for(const [name,price,group] of matches){const card=document.createElement('article');card.className='card';const label=document.createElement('div');label.className='small';label.textContent=group;const h=document.createElement('div');h.className='handle';h.textContent='@'+name;const p=document.createElement('div');p.className='price';p.textContent=price===null?'Taking offers':'$'+price.toLocaleString('en-US');const a=document.createElement('a');a.className='btn';a.textContent='View on HandleHub →';a.href='https://handlehub.app/telegram/'+encodeURIComponent(name);a.target='_blank';a.rel='noopener noreferrer';card.append(label,h,p,a);cards.append(card)}document.querySelector('#qty').textContent=listings.length;document.querySelector('#empty').style.display=matches.length?'none':'block'}
 [search,category,sort].forEach(x=>x.addEventListener('input',render));render();
 </script></body></html>
